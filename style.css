@@ -1,0 +1,56 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container{
+    border-style: double; 
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #09a9f3;
+}
+
+.register{
+    text-align: center;
+    border-style: groove;
+    width: 45vw;
+    border-radius: 7px;
+    background-color: #b3e1ff;
+
+}
+
+.login{
+    text-align: center;
+    border-style: groove;
+    width: 45vw;
+    border-radius: 7px;
+    background-color: #b3e1ff;
+}
+
+#adiciona{
+    text-align: center;
+    width: 120px;
+    background-color: #ad34f3;
+    border-radius: 7px;
+    color: #d9e6eb;
+}
+
+#logar{
+    text-align: center;
+    width: 120px;
+    background-color: #ad34f3;
+    border-radius: 7px;
+    color: #d9e6eb;
+}
+
+input{
+    width: 200px;
+    height: 20px;
+    border-radius: 7px;
+    background-color: #d9e6eb;
+
+}
