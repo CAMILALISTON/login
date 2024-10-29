@@ -1,10 +1,15 @@
 let bancoDeDados = [];
 function add() {
-    let usuario = document.getElementById("username").value;
-    if (existe(usuario) == false) {
-        bancoDeDados.push(usuario.toUpperCase());
+    let usuario = {
+        username: document.getElementById("username").value.toUpperCase(),
+        password: document.getElementById("senha").value
+    }
+    
+    if (existe(usuario.username) == false) {
+        bancoDeDados.push(usuario);
         alert("Usuário cadastrado com sucesso!");
         document.getElementById("username").value = null;
+        document.getElementById("senha").value = null;
     }
     else{
         alert("Esse usuário ja foi cadastrado!");
@@ -12,14 +17,16 @@ function add() {
 }
 
 function login(){
-    let usuario = document.getElementById("user").value;
-    if (existe(usuario) ==  false) {
-        alert("Usuário não encontrado!");
+    let usuario = document.getElementById("user").value.toUpperCase();
+    let senha = document.getElementById("pass").value;
+    if (autentica(usuario, senha) ==  false) {
+        alert("Falha de autenticação!");
     }
     else{
         alert("Bem vindo ao Sistema "+ usuario + "!");
     }
-    document.getElementById("username").value = null;
+    document.getElementById("user").value = null;
+    document.getElementById("pass").value = null;
 }
 
 function remove(){
@@ -46,15 +53,22 @@ function edit(){
         alert("Usuário alterado com sucesso!")
     }
     document.getElementById("userEdit").value = null;
-
 }
 
 function existe(username){
-    let pos = bancoDeDados.indexOf(username.toUpperCase());
-    if(pos == -1){
-        return false;
-    }
-    else{
-        return true; 
-    }
+    for(let usuario of bancoDeDados){
+        if(usuario.username == username){
+            return true;
+        }
+    }  
+    return false;
+}
+
+function autentica(username, password){
+    for(let usuario of bancoDeDados){
+        if(usuario.password == username && usuario.password == password){
+            return true;
+        }
+    }  
+    return false;
 }
