@@ -1,0 +1,283 @@
+<!-- Roteiro Completo para Construir o Projeto
+
+Passo 1: Configuração Inicial
+Abra o VS Code.
+Crie uma nova pasta para o projeto e abra essa pasta no VS Code.
+Abra o terminal integrado do VS Code (Menu "Terminal" -> "New Terminal" ou “Ctrl + aspas”).
+
+Passo 2: Criar a Estrutura de Arquivos
+Crie os seguintes arquivos na pasta do projeto:
+index.html
+cadastro.html
+tabela.html
+script.js
+scripttabela.js
+style.css
+styletabela.css
+
+Passo 3: Construir as Páginas HTML
+3.1 index.html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bem-vindo ao Projeto</h1>
+    <p>Alunos, personalizem do jeito que acharem pertinente 😀.</p>
+    <a href="cadastro.html">Cadastro</a>
+    <a href="tabela.html">Tabela</a>
+    <script src="script.js"></script>
+</body>
+</html>
+
+3.2 cadastro.html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cadastro de Usuário</h1>
+    <form id="cadastroForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+3.3 tabela.html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+    <link rel="stylesheet" href="styletabela.css">
+</head>
+<body>
+    <h1>Dados da Tabela</h1>
+    <table id="tabelaDados">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Linhas de dados serão adicionadas aqui dinamicamente -->
+        </tbody>
+    </table>
+    <script src="scripttabela.js"></script>
+</body>
+</html>
+
+Passo 4: Estilizar com CSS
+4.1 style.css
+/* Definição do estilo geral do corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte do texto */
+    background-color: #f0f0f0; /* Define a cor de fundo da página */
+    margin: 0; /* Remove a margem padrão do corpo */
+    padding: 0; /* Remove o padding padrão do corpo */
+}
+/* Estilização do título principal */
+h1 {
+    color: #333; /* Define a cor do texto do título */
+}
+/* Estilização dos parágrafos */
+p {
+    font-size: 16px; /* Define o tamanho da fonte dos parágrafos */
+    color: #666; /* Define a cor do texto dos parágrafos */
+}
+
+4.2 styletabela.css
+/* Estilização para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaços entre as células */
+}
+/* Estilização para as células da tabela */
+th, td {
+    border: 1px solid #ddd; /* Define borda */
+    padding: 8px; /* Espaçamento interno */
+    text-align: left; /* Alinhamento do texto */
+}
+/* Estilização para o cabeçalho da tabela */
+th {
+    background-color: #f2f2f2; /* Cor de fundo */
+    color: black; /* Cor do texto */
+}
+Passo 5: Adicionar Funcionalidade com JavaScript
+5.1 script.js
+// Adiciona um ouvinte de evento que será executado quando o documento for totalmente carregado
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('Documento carregado e pronto.');
+    const form = document.getElementById('cadastroForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('senha').value;
+        const usuario = { nome, email, senha };
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        usuarios.push(usuario);
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        alert('Usuário cadastrado com sucesso!');
+        form.reset();
+    });
+});
+
+5.2 scripttabela.js
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Código para carregar dados na tabela
+    let dados = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let tabela = document.getElementById('tabelaDados').getElementsByTagName('tbody')[0];    
+       for (let dado of dados) {
+        let linha = tabela.insertRow();
+        let celulaNome = linha.insertCell(0);
+        let celulaEmail = linha.insertCell(1);
+        let celulaSenha = linha.insertCell(2);
+        celulaNome.innerHTML = dado.nome;
+        celulaEmail.innerHTML = dado.email;
+        celulaSenha.innerHTML = dado.senha;
+    }
+
+});
+
+Passo 6: Utilizar LocalStorage
+LocalStorage: LocalStorage é uma API do navegador que permite armazenar dados no lado do cliente, ou seja, no próprio navegador do usuário. Os dados armazenados no LocalStorage persistem mesmo após o navegador ser fechado.
+Exemplo de Utilização do LocalStorage:
+// Armazenar um valor no LocalStorage
+localStorage.setItem('nome', 'João');
+
+// Recuperar um valor do LocalStorage
+let nome = localStorage.getItem('nome');
+console.log(nome); // Saída: João
+
+// Remover um item do LocalStorage
+localStorage.removeItem('nome');
+
+// Limpar todos os dados do LocalStorage
+localStorage.clear();
+
+
+Passo 7: Explicação e Criação de Modais
+O que é um Modal?
+Um modal é uma janela flutuante que aparece em cima do conteúdo da página, geralmente para exibir informações adicionais ou solicitar ações do usuário. Eles são usados para destacar conteúdo importante sem redirecionar o usuário para outra página.
+
+HTML para o Modal
+	
+    <!-- Definição do modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Cadastro efetuado com sucesso</p>
+        </div>
+    </div>
+
+Coloque esse código acima no cadastro.html ou qualquer outra página onde você deseja que o modal apareça.
+
+CSS para o Modal
+/* Estilo para o modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed; /* Fixa o modal na tela */
+    z-index: 1; /* Garante que o modal fique acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total da tela */
+    height: 100%; /* Altura total da tela */
+    overflow: auto; /* Adiciona barra de rolagem se necessário */
+    background-color: rgb(0,0,0); /* Cor de fundo */
+    background-color: rgba(0,0,0,0.4); /* Cor de fundo com transparência */
+}
+/* Estilo para o conteúdo do modal */
+.modal-content {
+    background-color: #fefefe; /* Cor de fundo do conteúdo */
+    margin: 15% auto; /* Margem para centralizar o modal */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid #888; /* Borda do modal */
+    width: 80%; /* Largura do conteúdo do modal */
+}
+/* Estilo para o botão de fechar */
+.close {
+    color: #aaa; /* Cor do botão de fechar */
+    float: right; /* Alinha à direita */
+    font-size: 28px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+}
+/* Estilo para o botão de fechar quando o mouse estiver sobre ele */
+.close:hover,
+.close:focus {
+    color: black; /* Cor preta */
+    text-decoration: none; /* Remove sublinhado */
+    cursor: pointer; /* Altera o cursor para pointer */
+}
+
+Adicione o CSS acima ao arquivo style.css para estilizar o modal
+JavaScript para Controlar o Modal
+// Obtém o modal
+let modal = document.getElementById("myModal");
+
+// Obtém o elemento <span> que fecha o modal
+let span = document.getElementsByClassName("close")[0];
+
+// Quando o usuário clicar no <span> (x), fecha o modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Quando o usuário clicar em qualquer lugar fora do modal-content, fecha o modal
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+Adicione o JavaScript acima ao arquivo script.js ou crie um novo arquivo de script específico para o modal
+
+Passo 8: Explicação Detalhada de Arrays e JSON
+Array: Um array é uma estrutura de dados usada para armazenar múltiplos valores em uma única variável.
+Exemplo de Array em JavaScript:
+
+let frutas = ['Maçã', 'Banana', 'Laranja'];
+console.log(frutas[0]); // Saída: Maçã
+
+JSON: JSON (JavaScript Object Notation) é um formato de texto leve usado para armazenar e transportar dados. Ele é frequentemente usado quando dados são enviados de um servidor para uma página web.
+Exemplo de JSON:
+
+{
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo"
+}
+
+Como Trabalhar com JSON em JavaScript:
+
+// Converter um objeto JavaScript em JSON
+let pessoa = {
+    nome: "João",
+    idade: 30,
+    cidade: "São Paulo"
+};
+let pessoaJSON = JSON.stringify(pessoa);
+console.log(pessoaJSON); // Saída: {"nome":"João","idade":30,"cidade":"São Paulo"}
+// Converter JSON em um objeto JavaScript
+let pessoaObj = JSON.parse(pessoaJSON);
+console.log(pessoaObj.nome); // Saída: João -->
