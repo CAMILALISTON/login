@@ -1,0 +1,78 @@
+body{
+    background-color: #c7f9cc;
+    color: #22577a;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.titulo{
+    text-align: center;   
+}
+
+#cadastroForm{
+    max-width: 20%;
+    display: flex;
+    flex-direction: column;   
+    margin-left: 125px;
+    font-weight: bolder;
+}
+
+input{
+    border: 65%;
+    background-color: #57cc99;
+    border: none;
+    width: 120%;
+    height: 35px;
+    margin-top: 5px;    
+}
+
+#comentarios{
+    height: 130px;
+}
+
+#botao{
+    color: #c7f9cc;
+    font-weight: bolder;
+    margin-top: 15px;
+    background-color:#22577a;
+    border: none;
+    width: 10%;
+    height: 40px;
+}
+.botao{
+    text-align: right;
+}
+
+/* Estilo para o modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed; /* Fixa o modal na tela */
+    z-index: 1; /* Garante que o modal fique acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total da tela */
+    height: 100%; /* Altura total da tela */
+    overflow: auto; /* Adiciona barra de rolagem se necessário */
+    background-color: rgb(0,0,0); /* Cor de fundo */
+    background-color: rgba(0,0,0,0.4); /* Cor de fundo com transparência */
+}
+/* Estilo para o conteúdo do modal */
+.modal-content {
+    background-color: #fefefe; /* Cor de fundo do conteúdo */
+    margin: 15% auto; /* Margem para centralizar o modal */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid #888; /* Borda do modal */
+    width: 80%; /* Largura do conteúdo do modal */
+}
+/* Estilo para o botão de fechar */
+.close {
+    color: #aaa; /* Cor do botão de fechar */
+    float: right; /* Alinha à direita */
+    font-size: 28px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+}
+/* Estilo para o botão de fechar quando o mouse estiver sobre ele */
+.close:hover,
+.close:focus {
+    color: black; /* Cor preta */
+    text-decoration: none; /* Remove sublinhado */
+    cursor: pointer; /* Altera o cursor para pointer */
+}

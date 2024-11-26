@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="informacoes.css">
+</head>
+<body>
+    <h1 class="titulo">Cadastro de Livros</h1>
+
+    <div>
+    <form id="cadastroForm">
+        <label for="livro">Nome do Livro:</label>
+        <input type="text" id="livro" name="livro" required>
+       
+        <label for="genero">Genero:</label>
+        <input type="text" id="genero" name="genero" required>
+
+        <label for="autor">Autor:</label>
+        <input type="text" id="autor" name="autor" required>
+
+        <label for="editora">Editora:</label>
+        <input type="text" id="editora" name="editora" required>
+
+        <label for="comentarios">Comentários:</label>
+        <input type="text" id="comentarios" name="comentarios" >
+
+        <label for="nota">Nota:</label>
+        <input type="text" id="nota" name="nota" >
+
+        <label for="situacao">Situação:</label>
+        <input type="text" id="situacao" name="situação" required>
+    </div>
+    
+    <div class="botao">
+        <button type="submit" id="botao">Cadastrar</button>
+    </div>
+
+    </form>
+    <!-- Definição do modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Cadastro efetuado com sucesso</p>
+        </div>
+    </div>
+
+    <script src="informacoes.js"></script>
+</body>
+</html>

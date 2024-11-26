@@ -1,0 +1,32 @@
+body{
+    background-color: #c7f9cc;
+    color: #22577a;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.cantologo{
+    color: black;
+    size: 100%;
+    display: flex;
+    font-weight: bolder;
+}
+.modal-content {
+    background-color: #fefefe; /* Cor de fundo do conteúdo */
+    margin: 15% auto; /* Margem para centralizar o modal */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid #888; /* Borda do modal */
+    width: 80%; /* Largura do conteúdo do modal */
+}
+/* Estilo para o botão de fechar */
+.close {
+    color: #aaa; /* Cor do botão de fechar */
+    float: right; /* Alinha à direita */
+    font-size: 28px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+}
+/* Estilo para o botão de fechar quando o mouse estiver sobre ele */
+.close:hover,
+.close:focus {
+    color: black; /* Cor preta */
+    text-decoration: none; /* Remove sublinhado */
+    cursor: pointer; /* Altera o cursor para pointer */
+}
